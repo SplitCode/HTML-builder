@@ -1,15 +1,16 @@
 const fs = require('fs').promises;
 const path = require('path');
 
-const getFilePath = (dirname, filename) =>
-  path.join(__dirname, dirname, filename);
-const secretFolderPath = path.join(__dirname, 'secret-folder', '');
+const getDirPath = (foldername) => path.join(__dirname, foldername);
+const getFilePath = (dirPath, filename) => path.join(dirPath, filename);
+
+const secretFolderPath = getDirPath('secret-folder');
 
 const showFolderData = async () => {
   const files = await fs.readdir(secretFolderPath, { withFileTypes: true });
 
   for (const file of files) {
-    const filePath = getFilePath('secret-folder', file.name);
+    const filePath = getFilePath(secretFolderPath, file.name);
     if (file.isFile()) {
       const stats = await fs.stat(filePath);
       const fileName = path.parse(file.name).name;

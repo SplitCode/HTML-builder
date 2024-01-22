@@ -11,7 +11,7 @@ const copyDir = async (src, dest) => {
   try {
     await fs.rm(dest, { recursive: true });
   } catch (error) {
-    null;
+    return;
   }
   await fs.mkdir(dest, { recursive: true });
 
