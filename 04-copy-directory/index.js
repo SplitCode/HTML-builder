@@ -11,7 +11,7 @@ const copyDir = async (src, dest) => {
   try {
     await fs.rm(dest, { recursive: true });
   } catch (error) {
-    return;
+    null;
   }
   await fs.mkdir(dest, { recursive: true });
 
@@ -31,8 +31,3 @@ const copyDir = async (src, dest) => {
 };
 
 copyDir(srcDirPath, destDirPath);
-
-// 1. Импортируйте все необходимые модули.
-// 2. Создайте папку `files-copy`, если она еще не существует.
-// 3. Прочитайте содержимое папки `files`.
-// 4. Скопируйте файлы из папки `files` в папку `files-copy`.
